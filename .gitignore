@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Databricks
+.databricks/
+.databricks-connect/
+*.databrickscfg
+
+# Bundle build artifacts
+.databricks.bundle.lock
+dist/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+bundle:
+  name: cdc_lakehouse
+
+variables:
+  catalog:
+    default: cdc_lakehouse
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-02543f96-daa5.cloud.databricks.com

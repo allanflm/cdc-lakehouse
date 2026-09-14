@@ -1,0 +1,2 @@
+databricks-connect==19.1
+pytest==9.1.1
