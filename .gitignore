@@ -17,3 +17,7 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Gerador de eventos CDC
+.generator_state/
+.generator_output/

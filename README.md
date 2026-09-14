@@ -66,7 +66,21 @@ databricks bundle validate
 
 # smoke test: cria um DataFrame no serverless via Databricks Connect
 .venv/Scripts/python.exe -m src.generator._smoke_test
+
+# testes unitarios (logica pura, sem tocar no workspace)
+.venv/Scripts/python.exe -m pytest tests/unit
+
+# gerador de eventos CDC: carga inicial, depois rodadas incrementais
+.venv/Scripts/python.exe -m src.generator.cli full --n-customers 50
+.venv/Scripts/python.exe -m src.generator.cli incremental
 ```
+
+O gerador grava JSON Lines particionado por data em
+`/Volumes/cdc_lakehouse/bronze/raw/<entity>/date=YYYY-MM-DD/`. Use `--dry-run`
+em qualquer subcomando pra gravar em `.generator_output/` local em vez do
+Volume. O estado do "banco de origem" simulado (quem existe, status atual de
+cada pedido, etc.) fica em `.generator_state/state.json`, que não é
+versionado — apague-o para recomeçar do zero com uma nova carga inicial.
 
 > Databricks Connect ainda não suporta Python 3.13/3.14 — use 3.12.
 
